@@ -1,0 +1,55 @@
+{
+    "Contract: Regulator, Toll Booth Operator": {
+        "isOperator": {
+            "should have correct initial value": {
+                "points": 0,
+                "mustPass": "failsCode",
+                "state": "passed"
+            }
+        },
+        "createNewOperator": {
+            "should be possible to create an operator and return an address": {
+                "points": 0,
+                "mustPass": "failsCode",
+                "state": "passed"
+            },
+            "should be possible to create an operator and emit events": {
+                "points": 0,
+                "mustPass": "failsCode",
+                "state": "passed"
+            },
+            "should be possible to create an operator and record it": {
+                "points": 0,
+                "mustPass": "failsCode",
+                "state": "passed"
+            },
+            "should be possible to create an operator with proper values": {
+                "points": 0,
+                "mustPass": "failsCode",
+                "state": "passed"
+            }
+        },
+        "removeOperator": {
+            "should be possible to remove an operator and return true": {
+                "points": 0,
+                "mustPass": "failsCode",
+                "state": "passed"
+            },
+            "should be possible to remove an operator and emit event": {
+                "points": 0,
+                "mustPass": "failsCode",
+                "state": "passed"
+            },
+            "should be possible to remove an operator and record it": {
+                "points": 0,
+                "mustPass": "failsCode",
+                "state": "passed"
+            },
+            "should be possible to remove an operator and let it live alone": {
+                "points": 0,
+                "mustPass": "failsCode",
+                "state": "passed"
+            }
+        }
+    }
+}

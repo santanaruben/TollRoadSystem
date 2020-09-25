@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exam-Project | ETH-DEV | B9Lab Academy</title>
+</head>
+
+<body>
+  <nav class="navbar sticky-top navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 ml-4 h1 logoText" style="cursor:pointer; z-index: 10;" data-toggle="modal"
+      data-target="#modalBienvenida">
+      <div class="row">
+        <div class="col" id="b9lab"></div>
+        <div class="col">Toll Road System</div>
+      </div>
+    </span>
+    <span class="navbar-brand mb-0 mr-4 h1" id="amountContract"></span>
+    <span><span id="activity" style="cursor:pointer;"></span>
+      <div class="btn-group" id="buttonAdmin" style="display:none">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Operator
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" id="adminButtons">
+        </div>
+      </div>
+    </span>
+
+  </nav>
+  <div class="container-fluid mt-1">
+    <div class="row" style="margin:auto;">
+      <div class="col scene_element fadeInDownB" id="inputScreen">
+        <div>
+          <div class="row" style="margin:auto;">
+            <div class="col col-md mt-1" style="padding: 0;">
+
+              <div class="form-row">
+                <label for="yourAddress" class="col-3 col-form-label">
+                  Your address
+                </label>
+                <!-- <label id="yourAddress" class="col-9 col-form-label" title="This is your address">
+                </label> -->
+                <div class="col-9">
+                  <select class="custom-select mr-sm-2" id="yourAddress"
+                    style="display:inline; font-size: 16px;" required>
+                  </select>
+                </div>
+
+                <label for="yourBalance" class="col-3 col-form-label mb-1">
+                  Your balance
+                </label>
+                <div id="yourBalance" class="col-4 col-form-label"
+                  title="This is your balance (in WEI) outside the contract">
+                </div>
+                <div class="col-1" style="font-size: 25px">
+                  =
+                </div>
+                <div id="yourBalanceEth" class="col-4 col-form-label text-right"
+                  title="This is your balance (in ETH) outside the contract">
+                </div>
+              </div>
+
+              <nav class="nav-pills nav-fill">
+                <div class="nav nav-tabs" id="nav-tab-principal" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-regulator-tab" data-toggle="tab" href="#nav-regulator"
+                    role="tab" aria-controls="nav-regulator" aria-selected="false">Regulator</a>
+                  <a class="nav-item nav-link" id="nav-tollBoothOperator-tab" data-toggle="tab"
+                    href="#nav-tollBoothOperator" role="tab" aria-controls="nav-tollBoothOperator"
+                    aria-selected="false">Toll Booth Operator</a>
+                  <a class="nav-item nav-link" id="nav-vehicle-tab" data-toggle="tab" href="#nav-vehicle" role="tab"
+                    aria-controls="nav-vehicle" aria-selected="false">Vehicle</a>
+                  <a class="nav-item nav-link" id="nav-tollBooth-tab" data-toggle="tab" href="#nav-tollBooth" role="tab"
+                    aria-controls="nav-tollBooth" aria-selected="false">Toll Booth</a>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent-principal">
+
+
+                <div class="tab-pane fade show active" id="nav-regulator" role="tabpanel"
+                  aria-labelledby="nav-regulator-tab">
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+
+                      <h6 class="ribbon5">Create New Toll Booth Operator</h6>
+                      <label style="cursor: pointer" for="operatorAddress" class="col-3 col-form-label mb-4">
+                        Operator owner address
+                      </label>
+                      <div class="col-9 createNewOperatorClass">
+                        <input type="text" class="form-control" id="operatorAddress" onkeypress="return hexOnly(event)"
+                          placeholder="Operator owner account here" pattern="[(A-f),(0-9),(x)]{42}" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Must be a valid ethereum address!
+                        </div>
+                      </div>
+
+                      <label style="cursor: pointer" for="operatorDeposit" class="col-3 col-form-label mb-4">
+                        Deposit
+                      </label>
+                      <div class="col-9 createNewOperatorClass">
+                        <input type="number" class="form-control" min="0" id="operatorDeposit"
+                          onkeypress="return numbersOnly(event)" placeholder="Deposit amount here" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Fill in this field with the value you want as deposit.
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="text-center">
+                    <button id="createNewOperator" class="btn btn-info" style="margin: 4px;">
+                      Create Operator
+                    </button>
+                  </div>
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+
+                      <h6 class="ribbon5">Set Vehicle Type</h6>
+                      <label style="cursor: pointer" for="vehicleAddress" class="col-3 col-form-label mb-4">
+                        Vehicle address
+                      </label>
+                      <div class="col-9 vehicleTypeClass">
+                        <input type="text" class="form-control" id="vehicleAddress" onkeypress="return hexOnly(event)"
+                          placeholder="Vehicle account here" pattern="[(A-f),(0-9),(x)]{42}" required autofocus>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Must be a valid ethereum address!
+                        </div>
+                      </div>
+
+                      <label style="cursor: pointer" for="vehicleType" class="col-3 col-form-label mb-4">
+                        Vehicle type
+                      </label>
+                      <div class="col-9 vehicleTypeClass">
+                        <input type="number" class="form-control" min="1" id="vehicleType"
+                          onkeypress="return numbersOnly(event)" placeholder="Number vehicle type here" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Fill in this field with a value greater than 0.
+                        </div>
+                      </div>
+
+                    </div>
+                  </form>
+                  <div class="text-center">
+                    <button id="setVehicleType" class="btn btn-info" style="margin: 4px;">
+                      Set Vehicle Type
+                    </button>
+                  </div>
+
+                </div>
+
+                <div class="tab-pane fade" id="nav-tollBoothOperator" role="tabpanel"
+                  aria-labelledby="nav-tollBoothOperator-tab">
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+                      <h6 class="ribbon5">Select a Toll Booth Operator Contract</h6>
+                      <label style="cursor: pointer" for="operators" class="col-3 col-form-label mb-2">
+                        Toll Booth Operators
+                      </label>
+                      <div class="col-9">
+                        <select class="custom-select mr-sm-2" id="operators" style="display:inline" required>
+                        </select>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Select an option!
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+
+                      <h6 class="ribbon5">Create a Toll Booth</h6>
+                      <label style="cursor: pointer" for="tollBoothAddress" class="col-3 col-form-label mb-4">
+                        Toll Booth address
+                      </label>
+                      <div class="col-9 addTollBoothClass">
+                        <input type="text" class="form-control" id="tollBoothAddress" onkeypress="return hexOnly(event)"
+                          placeholder="Toll Booth account here" pattern="[(A-f),(0-9),(x)]{42}" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Must be a valid ethereum address!
+                        </div>
+                      </div>
+
+                    </div>
+                  </form>
+
+                  <div class="text-center">
+                    <button id="addTollBooth" class="btn btn-info" style="margin: 4px;">
+                      Create Toll Booth
+                    </button>
+                  </div>
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+
+                      <h6 class="ribbon5">Set Base Route Price</h6>
+                      <label style="cursor: pointer" for="tollBoothEntryAddress" class="col-3 col-form-label mb-4">
+                        Entry toll booth
+                      </label>
+                      <div class="col-9 setRoutePriceClass">
+                        <input type="text" class="form-control" id="tollBoothEntryAddress"
+                          onkeypress="return hexOnly(event)" placeholder="Entry toll booth account here"
+                          pattern="[(A-f),(0-9),(x)]{42}" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Must be a valid ethereum address!
+                        </div>
+                      </div>
+
+                      <label style="cursor: pointer" for="tollBoothExitAddress" class="col-3 col-form-label mb-4">
+                        Exit toll booth
+                      </label>
+                      <div class="col-9 setRoutePriceClass">
+                        <input type="text" class="form-control" id="tollBoothExitAddress"
+                          onkeypress="return hexOnly(event)" placeholder="Exit toll booth account here"
+                          pattern="[(A-f),(0-9),(x)]{42}" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Must be a valid ethereum address!
+                        </div>
+                      </div>
+
+                      <label style="cursor: pointer" for="routePrice" class="col-3 col-form-label mb-4">
+                        Route price
+                      </label>
+                      <div class="col-9 setRoutePriceClass">
+                        <input type="number" class="form-control" min="0" id="routePrice"
+                          onkeypress="return numbersOnly(event)" placeholder="Route Price here" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Fill in this field with the value you want to set as route price.
+                        </div>
+                      </div>
+
+                    </div>
+                  </form>
+
+                  <div class="text-center">
+                    <button id="setRoutePrice" class="btn btn-info" style="margin: 4px;">
+                      Set Route Price
+                    </button>
+                  </div>
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+                      <h6 class="ribbon5">Set Multiplier</h6>
+
+                      <label style="cursor: pointer" for="vehicleTypeMultiplier" class="col-3 col-form-label mb-4">
+                        Vehicle type
+                      </label>
+                      <div class="col-9 setMultiplierClass">
+                        <input type="number" class="form-control" min="1" id="vehicleTypeMultiplier"
+                          onkeypress="return numbersOnly(event)" placeholder="Number vehicle type here" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Fill in this field with the number of a vehicle type (Should be greater than 0).
+                        </div>
+                      </div>
+
+                      <label style="cursor: pointer" for="multiplier" class="col-3 col-form-label mb-4">
+                        Multiplier
+                      </label>
+                      <div class="col-9 setMultiplierClass">
+                        <input type="number" class="form-control" min="0" id="multiplier"
+                          onkeypress="return numbersOnly(event)" placeholder="Multiplier factor here" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Fill in this field with a number (Could be 0).
+                        </div>
+                      </div>
+
+                    </div>
+                  </form>
+
+                  <div class="text-center">
+                    <button id="setMultiplier" class="btn btn-info" style="margin: 4px;">
+                      Set Multiplier
+                    </button>
+                  </div>
+
+                </div>
+
+                <div class="tab-pane fade" id="nav-vehicle" role="tabpanel" aria-labelledby="nav-vehicle-tab">
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+                      <h6 class="ribbon5">Select a Toll Booth Operator Contract</h6>
+                      <label style="cursor: pointer" for="operatorsForVehicles" class="col-3 col-form-label mb-2">
+                        Toll Booth Operators
+                      </label>
+                      <div class="col-9">
+                        <select class="custom-select mr-sm-2" id="operatorsForVehicles" style="display:inline" required>
+                        </select>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Select an option!
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+                      <h6 class="ribbon5">Your Contract Balance</h6>
+                      <label for="yourCBalance" class="col-3 col-form-label mb-2">
+                        Your Contract balance
+                      </label>
+                      <div id="yourCBalance" class="col-4 col-form-label"
+                        title="This is your balance (in WEI) inside the contract">
+                      </div>
+                      <div class="col-1" style="font-size: 25px">
+                        =
+                      </div>
+                      <div id="yourCBalanceEth" class="col-4 col-form-label text-right"
+                        title="This is your balance (in ETH) inside the contract">
+                      </div>
+                    </div>
+                  </form>
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+                      <h6 class="ribbon5">Hash Secret</h6>
+
+                      <label style="cursor: pointer" for="secret" class="col-3 col-form-label mb-4">
+                        Secret
+                      </label>
+                      <div class="col-9 hashSecretClass">
+                        <input type="text" class="form-control" id="secret" placeholder="Secret here" autofocus
+                          required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Fill in this field.
+                        </div>
+                      </div>
+
+                    </div>
+                  </form>
+
+                  <div class="text-center">
+                    <button id="hashSecret" class="btn btn-info" style="margin: 4px;">
+                      Create Hash
+                    </button>
+                  </div>
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+                      <h6 class="ribbon5">Enter Road</h6>
+
+                      <label style="cursor: pointer" for="enterRoadAddress" class="col-3 col-form-label mb-4">
+                        Entry toll booth
+                      </label>
+                      <div class="col-9 enterRoadClass">
+                        <input type="text" class="form-control" id="enterRoadAddress" onkeypress="return hexOnly(event)"
+                          placeholder="Entry toll booth account here" pattern="[(A-f),(0-9),(x)]{42}" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Must be a valid ethereum address!
+                        </div>
+                      </div>
+
+                      <label style="cursor: pointer" for="enterRoadHash" class="col-3 col-form-label mb-4">
+                        Hash
+                      </label>
+                      <div class="col-9 enterRoadClass">
+                        <input type="text" class="form-control" id="enterRoadHash" onkeypress="return hexOnly(event)"
+                          maxlength="66" placeholder="Previously created Hash here" pattern="[(A-f),(0-9),(x)]{66}"
+                          required>
+                        <div class="valid-feedback">
+                          This is a valid hash!
+                        </div>
+                        <div class="invalid-feedback">
+                          Must be a valid hash!
+                        </div>
+                      </div>
+
+                      <label for="minDeposit" class="col-3 col-form-label mb-4">
+                        Minimum deposit
+                      </label>
+                      <div id="minDeposit" class="col-4 col-form-label" title="This is the minimum deposit (in WEI)">
+                      </div>
+                      <div class="col-1" style="font-size: 25px">
+                        =
+                      </div>
+                      <div id="minDepositEth" class="col-4 col-form-label text-right"
+                        title="This is the minimum deposit (in ETH)">
+                      </div>
+
+                      <label style="cursor: pointer" for="enterDeposit" class="col-3 col-form-label mb-4">
+                        Deposit
+                      </label>
+                      <div class="col-9 enterRoadClass">
+                        <input type="number" class="form-control" min="0" id="enterDeposit"
+                          onkeypress="return numbersOnly(event)"
+                          placeholder="Wei amount to send as deposit (Must be greater than Minimum Deposit)" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Number - Wei amount to send as deposit (Must be greater than Minimum Deposit).
+                        </div>
+                      </div>
+
+                    </div>
+                  </form>
+
+                  <div class="text-center">
+                    <button id="enterRoad" class="btn btn-info" style="margin: 4px;">
+                      Enter Road
+                    </button>
+                  </div>
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+                      <h6 class="ribbon5">Entry History</h6>
+                      <div id="LogRoadEntered" class="col">
+                      </div>
+                    </div>
+                  </form>
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+                      <h6 class="ribbon5">Exit History</h6>
+                      <div id="LogRoadExited" class="col mb-1">
+                      </div>
+                    </div>
+                  </form>
+
+                  <div class="text-center">
+                    <button id="updateExitHistory" class="btn btn-info" style="margin: 4px;">
+                      Exit History
+                    </button>
+                  </div>
+
+                </div>
+
+                <div class="tab-pane fade" id="nav-tollBooth" role="tabpanel" aria-labelledby="nav-tollBooth-tab">
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+                      <h6 class="ribbon5">Select a Toll Booth Operator Contract</h6>
+                      <label style="cursor: pointer" for="operatorsForTollBooths" class="col-3 col-form-label mb-2">
+                        Toll Booth Operators
+                      </label>
+                      <div class="col-9">
+                        <select class="custom-select mr-sm-2" id="operatorsForTollBooths" style="display:inline"
+                          required>
+                        </select>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Select an option!
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                  <form class="mt-2" novalidate>
+                    <div class="form-row">
+                      <h6 class="ribbon5">Report Exit Road</h6>
+
+                      <label style="cursor: pointer" for="reportExitRoadSecret" class="col-3 col-form-label mb-4">
+                        Exit Secret
+                      </label>
+                      <div class="col-9 reportExitRoadClass">
+                        <input type="text" class="form-control" id="reportExitRoadSecret" placeholder="Secret here"
+                          autofocus required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Fill in this field.
+                        </div>
+                      </div>
+
+                    </div>
+                  </form>
+
+                  <div class="text-center">
+                    <button id="reportExitRoad" class="btn btn-info" style="margin: 4px;">
+                      Report Exit Road
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col col-md-4" id="outputScreen">
+        <h6 class=" text-center ribbon4 scene_element scene_element--fadeinright">Current Transaction</h6>
+        <div id="txStatusUp" style="min-height: 26vh;"></div>
+        <h6 class=" text-center ribbon4 scene_element scene_element--fadeinright">Logs</h6>
+        <div>
+          <div>
+            <div class="row" style="margin-top: -5px;">
+              <div class="col">
+
+                <form style="font-size: 14px;" novalidate>
+                  <div class="form-row">
+                    <label style="cursor: pointer" for="operatorsForLogs" class="col-3 col-form-label mb-2">
+                      Operator
+                    </label>
+                    <div class="col-9">
+                      <select class="custom-select mr-sm-2" id="operatorsForLogs"
+                        style="display:inline; font-size: 13px;" required>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+
+                <nav class="nav-fill" style="margin-top: -8px;">
+                  <div class="nav nav-tabs nav-small" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-LogTollBoothOperatorCreated-tab" data-toggle="tab"
+                      href="#nav-LogTollBoothOperatorCreated" role="tab" aria-controls="nav-LogTollBoothOperatorCreated"
+                      aria-selected="false">New Operator</a>
+                    <a class="nav-item nav-link" id="nav-LogVehicleTypeSet-tab" data-toggle="tab"
+                      href="#nav-LogVehicleTypeSet" role="tab" aria-controls="nav-LogVehicleTypeSet"
+                      aria-selected="false">Vehicle Type</a>
+                    <a class="nav-item nav-link" id="nav-LogTollBoothAdded-tab" data-toggle="tab"
+                      href="#nav-LogTollBoothAdded" role="tab" aria-controls="nav-LogTollBoothAdded"
+                      aria-selected="false">New Toll Booth</a>
+                    <a class="nav-item nav-link" id="nav-LogRoutePriceSet-tab" data-toggle="tab"
+                      href="#nav-LogRoutePriceSet" role="tab" aria-controls="nav-LogRoutePriceSet"
+                      aria-selected="false">Route Price</a>
+                    <a class="nav-item nav-link" id="nav-LogMultiplierSet-tab" data-toggle="tab"
+                      href="#nav-LogMultiplierSet" role="tab" aria-controls="nav-LogMultiplierSet"
+                      aria-selected="false">Multiplier</a>
+                    <a class="nav-item nav-link" id="nav-LogRoadEntry-tab" data-toggle="tab" href="#nav-LogRoadEntry"
+                      role="tab" aria-controls="nav-LogRoadEntry" aria-selected="false">Road Entered</a>
+                    <a class="nav-item nav-link" id="nav-LogRoadExit-tab" data-toggle="tab" href="#nav-LogRoadExit"
+                      role="tab" aria-controls="nav-LogRoadExit" aria-selected="false">Road Exited</a>
+                    <a class="nav-item nav-link" id="nav-LogPendingPayment-tab" data-toggle="tab"
+                      href="#nav-LogPendingPayment" role="tab" aria-controls="nav-LogPendingPayment"
+                      aria-selected="false">Pending Payment</a>
+
+
+                  </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-LogTollBoothOperatorCreated" role="tabpanel"
+                    aria-labelledby="nav-LogTollBoothOperatorCreated-tab">
+                    <div id="LogTollBoothOperatorCreated" class="col">
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-LogVehicleTypeSet" role="tabpanel"
+                    aria-labelledby="nav-LogVehicleTypeSet-tab">
+                    <div id="LogVehicleTypeSet" class="col">
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="nav-LogTollBoothAdded" role="tabpanel"
+                    aria-labelledby="nav-LogTollBoothAdded-tab">
+                    <div id="LogTollBoothAdded" class="col">
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="nav-LogRoutePriceSet" role="tabpanel"
+                    aria-labelledby="nav-LogRoutePriceSet-tab">
+                    <div id="LogRoutePriceSet" class="col">
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="nav-LogMultiplierSet" role="tabpanel"
+                    aria-labelledby="nav-LogMultiplierSet-tab">
+                    <div id="LogMultiplierSet" class="col">
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="nav-LogRoadEntry" role="tabpanel"
+                    aria-labelledby="nav-LogRoadEntry-tab">
+                    <div id="LogRoadEntry" class="col">
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="nav-LogRoadExit" role="tabpanel" aria-labelledby="nav-LogRoadExit-tab">
+                    <div id="LogRoadExit" class="col">
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="nav-LogPendingPayment" role="tabpanel"
+                    aria-labelledby="nav-LogPendingPayment-tab">
+                    <div id="LogPendingPayment" class="col">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalBienvenida" tabindex="-1" role="dialog" aria-labelledby="modalBienvenidaTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content container-fluid justify-content-center">
+          <div class="modal-header text-center">
+            <h5 class="modal-title" id="modalBienvenidaTitle">Welcome</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="modalBodyArribaBienvenida"></div>
+          <div class="modal-body row container-fluid justify-content-around" id="modal-body-bienvenida"
+            style="overflow:auto; margin: auto">
+
+            <div class="col-11">
+              <div class="mt-1">
+                <a href="https://academy.b9lab.com" target="_blank">
+                  <div id="b9lab-logo" class="brand"></div>
+                </a>
+              </div>
+              <h4 class="text-center mt-2">Toll Road System application for ethereum - Final Project - Ethereum
+                Developer Course - B9lab Academy</h4>
+            </div>
+
+            <div class="col-12">
+              <p ALIGN="justify">
+                <h5 class="text-center">This application works through the Blockchain protocol provided by Ethereum
+                  Smart Contracts.</h5>
+                <br>
+                <div class="text-center">
+                  <a href="https://ethereum.org" target="_blank">
+                    <div id="ethereumBrand" class="brand"></div>
+                  </a>
+                </div>
+                <br>
+                <h5 class="text-center">
+                  Technologies used to build this application</h5>
+              </p>
+            </div>
+            <br>
+
+            <div>
+              <a href="https://trufflesuite.com" target="_blank">
+                <div id="truffle" class="brand"></div>
+              </a>
+            </div>
+            <div>
+              <a href="https://getbootstrap.com/" target="_blank">
+                <div id="bootstrap" class="brand"></div>
+              </a>
+            </div>
+            <div>
+              <a href="https://jquery.com/" target="_blank">
+                <div id="jquery" class="brand"></div>
+              </a>
+            </div>
+            <div>
+              <a href="https://webpack.js.org" target="_blank">
+                <div id="webpack" class="brand"></div>
+              </a>
+            </div>
+
+
+            <div class="w-100"><br></div>
+            <div style="font-size:12px">
+              <a href="https://about.me/rubensantana" target="_blank">Rubén Santana, 2020</a>
+            </div>
+
+            <div class="col-11">
+              <p ALIGN="justify">
+                <h5>Project intro</h5>
+                Our project describes a road system that will be represented by 2 overarching smart contracts:
+                <ul>
+                  <li>
+                    Regulator.
+                  </li>
+                  <li>
+                    TollBoothOperator.
+                  </li>
+                </ul>
+                These other elements of the system are represented by externally owned accounts:
+                <ul>
+                  <li>
+                    owner of `Regulator`.
+                  </li>
+                  <li>
+                    owner of `TollBoothOperator`.
+                  </li>
+                  <li>
+                    individual vehicles.
+                  </li>
+                  <li>
+                    individual toll booths.
+                  </li>
+                </ul>
+
+                <h5>Route price</h5>
+                The base price of a route will be determined by 3 variables:
+                <ul>
+                  <li>
+                    the entry toll booth.
+                  </li>
+                  <li>
+                    the exit toll booth.
+                  </li>
+                  <li>
+                    the vehicle type.
+                  </li>
+                </ul>
+                These variables will be used thus:
+                <ul>
+                  <li>
+                    the `TollBoothOperator` defines a base route price from the entry booth to the exit booth. The base
+                    route price from the exit booth to the entry booth may be non-existent, equal or different.
+                  </li>
+                  <li>
+                    the `TollBoothOperator` defines a multiplier for each vehicle type. This is the number by which the
+                    base route price is multiplied with to get the route price or deposit applicable to a specific
+                    vehicle.
+                  </li>
+                </ul>
+
+                <h5>Vehicles</h5>
+                We only care about vehicles, not about drivers. It means it can be driven by the vehicle's rightful
+                owner, another driver, or no human driver at all.
+                <ul>
+                  <li>
+                    Only vehicles registered with the regulator and allowed by the operator are allowed to enter the
+                    road system.
+                  </li>
+                  <li>
+                    Before entering the road system, registered vehicles must make a deposit of at least the amount
+                    required by the operator for their vehicle type.
+                  </li>
+                  <li>
+                    Upon exit, the exit toll booth will trigger the payment off the deposit and refund the difference to
+                    the vehicle.
+                  </li>
+                </ul>
+                Additionally,
+                <ul>
+                  <li>
+                    This deposit must be accompanied by the address of the toll booth by which they will enter.
+                  </li>
+                  <li>
+                    When exiting the road system, the vehicle gives, off-chain, a secret to the exit toll booth.
+                  </li>
+                  <li>
+                    The exit toll booth sends this secret to the toll booth operator contract, which is used to unlock
+                    the deposit, then pay the toll booth operator the proper fee for the route taken, then refunds the
+                    difference to the vehicle.
+                  </li>
+                </ul>
+
+                <h5>Toll booths</h5>
+                <ul>
+                  <li>
+                    When faced with a vehicle that wants to enter the road system, a toll booth will confirm, off-chain,
+                    the address of the incoming vehicle.
+                  </li>
+                  <li>
+                    If the vehicle has made the proper deposit for its type and mentioned the booth address, the booth
+                    opens the gate. Tests will assume that this "opens the gate" part is always successful as long as a
+                    proper contract call is made.
+                  </li>
+                </ul>
+
+                <h5>Charge mechanics</h5>
+                For a vehicle to be accepted on the road system and the operator to be paid at the end of the route, a
+                little dance is engineered:
+                <ul>
+                  <li>
+                    before entering the system, the vehicle deposits the required amount into the `TollBoothOperator`,
+                    and passes along the address of the entry booth and a unique hashed secret of its own choice. The
+                    vehicle keeps the secret until the end of the trip.
+                  </li>
+                  <li>
+                    when faced with the entry toll booth it mentioned when depositing, it proves its identity off-chain
+                    (we talk about this identity proof but you need not implement it), after which the booth opens the
+                    gate.
+                  </li>
+                  <li>
+                    when exiting the road system at a booth, the vehicle gives the exit toll booth its unhashed secret
+                    off-chain. Again, we talk about this off-chain exchange but you do not need to implement it.
+                  </li>
+                  <li>
+                    the exit toll booth then submits this secret to the `TollBoothOperator`, which unlocks the deposit
+                    for payment and refund of the difference, if applicable.
+                  </li>
+                  <li>
+                    if the fee is equal to or higher than the deposit, then the whole deposit is used and no more is
+                    asked of the vehicle, now or before any future trip.
+                  </li>
+                  <li>
+                    if the fee is smaller than the deposit, then the difference is returned to the vehicle.
+                  </li>
+                  <li>
+                    if the fee is not known at the time of exit, i.e. if the fee is `0`, the pending payment is
+                    recorded, and one "base route price required" event is emitted, and listened to by the operator's
+                    oracle.
+                  </li>
+                  <li>
+                    when the oracle receives a new base route price request, it submits the base fee, which also clears
+                    one pending payment.
+                  </li>
+                  <li>
+                    if there are more than 1 pending payments on a given route, an additional function is there to
+                    progressively clear the backlog a set number of pending payments of said route at a time in a FIFO
+                    manner. If both vehicleA and vehicleB entered at the same booths and exited at the same booths, then
+                    if vehicleA exited before vehicleB, then vehicleA should pop from the FIFO ahead of vehicleB.
+                  </li>
+                  <li>
+                    the vehicle type and multiplier to be used are those at the time of entry.
+                  </li>
+                </ul>
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrarModal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--modal-->
+
+    <script src="index.js"></script>
+
+</body>
+</html>

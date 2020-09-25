@@ -1,0 +1,91 @@
+{
+    "Contract: TollBoothOperator": {
+        "should have correct number of functions": {
+            "points": 0,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "deploy": {
+            "should not be possible to deploy a TollBoothOperator with deposit 0 - 1": {
+                "points": 0,
+                "mustPass": "failsCode",
+                "state": "passed"
+            },
+            "should be possible to deploy a TollBoothOperator with parameters - 1": {
+                "points": 0,
+                "mustPass": "failsCode",
+                "state": "passed"
+            }
+        },
+        "Vehicle Operations": {
+            "enterRoad": {
+                "should not be possible to enter road if paused": {
+                    "points": 0,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to enter road with more than required deposit": {
+                    "points": 0,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "reportExitRoad with excessive deposited": {
+                "should be possible to report exit road on route with known price below deposited": {
+                    "points": 0,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to report exit road on route with unknown price": {
+                    "points": 0,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "reportExitRoad with new multiplier": {
+                "should be possible to report exit road on route with known price below deposited": {
+                    "points": 0,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to report exit road on route with unknown price": {
+                    "points": 0,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "Pending payments with vehicles on same route, then setRoutePrice": {
+                "should be possible to set the base route price below both deposits and reduce count by 1": {
+                    "points": 0,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set the base route price above both deposits and reduce count by 1": {
+                    "points": 0,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "Clear one more pending payment": {
+                    "should be possible to set the base route price below both deposits then clear the second by hand": {
+                        "points": 0,
+                        "mustPass": "failsCode",
+                        "state": "passed"
+                    }
+                }
+            },
+            "Withdraw from 2 vehicles": {
+                "should be possible to withdraw if second vehicle has exited": {
+                    "points": 0,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "Scalability": {
+                "should cost proportional gas to clear pending 1 by 1, 2 by 2 or 3 by 3": {
+                    "points": 0,
+                    "state": "passed"
+                }
+            }
+        }
+    }
+}

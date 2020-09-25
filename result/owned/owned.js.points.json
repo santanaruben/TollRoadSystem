@@ -1,0 +1,833 @@
+{
+    "Contract: Owned inheritance tree": {
+        "should fail to deploy a Owned if pass value": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "should fail to deploy a Pausable if pass value": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "should fail to deploy a Regulator if pass value": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "should fail to deploy a DepositHolder if pass value": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "should fail to deploy a MultiplierHolder if pass value": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "should fail to deploy a RoutePriceHolder if pass value": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "should fail to deploy a TollBoothHolder if pass value": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "should fail to deploy a TollBoothOperator if pass value": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "should have correct number of functions": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "Owned": {
+            "getOwner": {
+                "should have correct initial value": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to ask for owner from any address": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to successfully send a transaction to getOwner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getOwner without an event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to GetOwner without changing owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to send a transaction with value to getOwner": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner": {
+                "should not be possible to set owner if asking from wrong owner": {
+                    "points": 5,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if to 0": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if pass value": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner a second time": {
+                "should not be possible to set owner if asking from wrong one": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            }
+        },
+        "Pausable": {
+            "getOwner": {
+                "should have correct initial value": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to ask for owner from any address": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to successfully send a transaction to getOwner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getOwner without an event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to GetOwner without changing owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to send a transaction with value to getOwner": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner": {
+                "should not be possible to set owner if asking from wrong owner": {
+                    "points": 5,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if to 0": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if pass value": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner a second time": {
+                "should not be possible to set owner if asking from wrong one": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            }
+        },
+        "Regulator": {
+            "getOwner": {
+                "should have correct initial value": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to ask for owner from any address": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to successfully send a transaction to getOwner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getOwner without an event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to GetOwner without changing owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to send a transaction with value to getOwner": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner": {
+                "should not be possible to set owner if asking from wrong owner": {
+                    "points": 5,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if to 0": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if pass value": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner a second time": {
+                "should not be possible to set owner if asking from wrong one": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            }
+        },
+        "DepositHolder": {
+            "getOwner": {
+                "should have correct initial value": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to ask for owner from any address": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to successfully send a transaction to getOwner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getOwner without an event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to GetOwner without changing owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to send a transaction with value to getOwner": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner": {
+                "should not be possible to set owner if asking from wrong owner": {
+                    "points": 5,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if to 0": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if pass value": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner a second time": {
+                "should not be possible to set owner if asking from wrong one": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            }
+        },
+        "MultiplierHolder": {
+            "getOwner": {
+                "should have correct initial value": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to ask for owner from any address": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to successfully send a transaction to getOwner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getOwner without an event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to GetOwner without changing owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to send a transaction with value to getOwner": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner": {
+                "should not be possible to set owner if asking from wrong owner": {
+                    "points": 5,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if to 0": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if pass value": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner a second time": {
+                "should not be possible to set owner if asking from wrong one": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            }
+        },
+        "RoutePriceHolder": {
+            "getOwner": {
+                "should have correct initial value": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to ask for owner from any address": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to successfully send a transaction to getOwner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getOwner without an event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to GetOwner without changing owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to send a transaction with value to getOwner": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner": {
+                "should not be possible to set owner if asking from wrong owner": {
+                    "points": 5,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if to 0": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if pass value": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner a second time": {
+                "should not be possible to set owner if asking from wrong one": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            }
+        },
+        "TollBoothHolder": {
+            "getOwner": {
+                "should have correct initial value": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to ask for owner from any address": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to successfully send a transaction to getOwner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getOwner without an event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to GetOwner without changing owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to send a transaction with value to getOwner": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner": {
+                "should not be possible to set owner if asking from wrong owner": {
+                    "points": 5,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if to 0": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if pass value": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner a second time": {
+                "should not be possible to set owner if asking from wrong one": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            }
+        },
+        "TollBoothOperator": {
+            "getOwner": {
+                "should have correct initial value": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to ask for owner from any address": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to successfully send a transaction to getOwner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getOwner without an event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to GetOwner without changing owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to send a transaction with value to getOwner": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner": {
+                "should not be possible to set owner if asking from wrong owner": {
+                    "points": 5,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if to 0": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if pass value": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setOwner a second time": {
+                "should not be possible to set owner if asking from wrong one": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set owner if no change": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set owner again and update owner": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            }
+        }
+    }
+}

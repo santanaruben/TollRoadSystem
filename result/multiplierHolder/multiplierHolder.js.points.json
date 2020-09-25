@@ -1,0 +1,351 @@
+{
+    "Contract: MultiplierHolder": {
+        "should fail to deploy a MultiplierHolder if pass value": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "should fail to deploy a TollBoothOperator if pass value": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "should have correct number of functions": {
+            "points": 1,
+            "mustPass": "failsCode",
+            "state": "passed"
+        },
+        "MultiplierHolder": {
+            "getMultiplier": {
+                "should have correct initial value": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to ask for multiplier from any address": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send successfully a transaction to getMultiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getMultiplier without any event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getMultiplier without changing multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to send a transaction with value to getMultiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setMultiplier": {
+                "should not be possible to set multiplier if asking from wrong owner": {
+                    "points": 5,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set multiplier if type is 0": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set multiplier if no change": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set multiplier if pass value": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set 1 multiplier and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set 1 multiplier and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set 1 multiplier and update multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setMultiplier a second time": {
+                "should be possible to set another multiplier with values type0 - zero and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type0 - zero and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type0 - zero and update multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type0 - multiplier1 and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type0 - multiplier1 and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type0 - multiplier1 and update multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier0 and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier0 and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier0 and update multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier1 and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier1 and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier1 and update multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setMultiplier a second time after an owner change": {
+                "should not be possible to set another multiplier if old owner": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set multiplier if same": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier and update it": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            }
+        },
+        "TollBoothOperator": {
+            "getMultiplier": {
+                "should have correct initial value": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to ask for multiplier from any address": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send successfully a transaction to getMultiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getMultiplier without any event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to send a transaction to getMultiplier without changing multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to send a transaction with value to getMultiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setMultiplier": {
+                "should not be possible to set multiplier if asking from wrong owner": {
+                    "points": 5,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set multiplier if type is 0": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set multiplier if no change": {
+                    "points": 2,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set multiplier if pass value": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set 1 multiplier and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set 1 multiplier and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set 1 multiplier and update multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setMultiplier in TollBoothOperator is not pausable": {
+                "should be possible to check getMultiplier if paused": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set multiplier if paused": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setMultiplier a second time": {
+                "should be possible to set another multiplier with values type0 - zero and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type0 - zero and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type0 - zero and update multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type0 - multiplier1 and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type0 - multiplier1 and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type0 - multiplier1 and update multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier0 and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier0 and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier0 and update multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier1 and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier1 and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier with values type1 - multiplier1 and update multiplier": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            },
+            "setMultiplier a second time after an owner change": {
+                "should not be possible to set another multiplier if old owner": {
+                    "points": 3,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should not be possible to set multiplier if same": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier and return true": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier and emit event": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                },
+                "should be possible to set another multiplier and update it": {
+                    "points": 1,
+                    "mustPass": "failsCode",
+                    "state": "passed"
+                }
+            }
+        }
+    }
+}

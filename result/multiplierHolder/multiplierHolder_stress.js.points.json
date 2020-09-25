@@ -1,0 +1,28 @@
+{
+    "Contract: MultiplierHolder - stress": {
+        "MultiplierHolder": {
+            "should cost the same gas to set multiplier on successive types": {
+                "points": 3,
+                "mustPass": "failsCode",
+                "state": "passed"
+            },
+            "should cost the same gas to unset multiplier on successive types": {
+                "points": 5,
+                "mustPass": "failsCode",
+                "state": "passed"
+            }
+        },
+        "TollBoothOperator": {
+            "should cost the same gas to set multiplier on successive types": {
+                "points": 3,
+                "mustPass": "failsCode",
+                "state": "passed"
+            },
+            "should cost the same gas to unset multiplier on successive types": {
+                "points": 5,
+                "mustPass": "failsCode",
+                "state": "passed"
+            }
+        }
+    }
+}
